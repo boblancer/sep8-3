@@ -80,3 +80,12 @@ class Disk():
         lt(90)
         fd(self.thickness / 2)
         end_fill()
+        
+    def pushdisk(self, disk):
+        self.stack.append(disk)
+        disk.newpos(self.x, self.y + disk.height * len(self.stack))
+
+    def popdisk(self):
+        disk = self.stack.pop(len(self.stack) - 1)
+        disk.newpos(self.x, self.length + 50)
+        return disk
